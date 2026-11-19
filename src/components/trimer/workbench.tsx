@@ -28,6 +28,7 @@ import {
   type ThermoMode,
 } from "@/lib/chem/data";
 import { gaussianDeck, routeCard } from "@/lib/chem/gaussian";
+import { StructureStrip } from "@/components/trimer/structure";
 import { compute, methodScan, strainCurve, type JobInput, type Station } from "@/lib/chem/surface";
 import { rtLnMolar } from "@/lib/chem/thermo";
 
@@ -64,19 +65,23 @@ export function Workbench() {
 
   useEffect(() => setReady(true), []);
 
-  const partners: [AlkyneId, AlkyneId, AlkyneId] = homo ? [alkynes[0], alkynes[0], alkynes[0]] : alkynes;
-  const input: JobInput = {
-    alkynes: partners,
-    metal,
-    method,
-    solvent,
-    temperature,
-    thermo,
-    standardState,
-    twoState: twoState && (metal === "CpCo" || metal === "CpStarCo"),
-    thermalMode,
-    wigner,
-  };
+  const input: JobInput = useMemo(() => {
+    const chosen: [AlkyneId, AlkyneId, AlkyneId] = homo
+      ? [alkynes[0], alkynes[0], alkynes[0]]
+      : alkynes;
+    return {
+      alkynes: chosen,
+      metal,
+      method,
+      solvent,
+      temperature,
+      thermo,
+      standardState,
+      twoState: twoState && (metal === "CpCo" || metal === "CpStarCo"),
+      thermalMode,
+      wigner,
+    };
+  }, [homo, alkynes, metal, method, solvent, temperature, thermo, standardState, twoState, thermalMode, wigner]);
 
   const profile = useMemo(() => compute(input), [input]);
   const active = profile.stations.find((s) => s.id === selected) ?? profile.stations[0];
@@ -197,6 +202,7 @@ export function Workbench() {
                 {ready ? <ProfileChart stations={profile.stations} yMode={yMode} selected={active.id} onPick={setSelected} /> : <div className="h-full" />}
               </div>
               <StationCard station={active} />
+              <StructureStrip metal={input.metal} alkynes={input.alkynes} geom={active.geom} />
               <StationTable stations={profile.stations} selected={active.id} yMode={yMode} onPick={setSelected} />
             </section>
           )}

@@ -1,6 +1,8 @@
 import { R_KCAL } from "./data";
 import { inertia, type XYZ } from "./geometry";
 
+type Rotor = ReturnType<typeof inertia>;
+
 const kB = 1.380649e-23;
 const hP = 6.62607015e-34;
 const NA = 6.02214076e23;

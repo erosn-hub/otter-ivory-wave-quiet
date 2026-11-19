@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Trímera",
+      "hasCanvas": false,
+      "bodyTextLen": 2622,
+      "bodyTextHash": "d4b8486ac802f096e7c9f4a6ecae1a79b2f569217a47cd30696a88b6d51997be",
+      "bodyTextPrefix": "CUADERNO DE RUTA · NIVEL DE POSGRADO Trímera Perfil energético y",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Trímera",
+      "hasCanvas": false,
+      "bodyTextLen": 2617,
+      "bodyTextHash": "e156b4491c1b4e5bb1a9f783d97383670510d9d53e826d00d3a7e7d8d78343f3",
+      "bodyTextPrefix": "CUADERNO DE RUTA · NIVEL DE POSGRADO Trímera Perfil energético y",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}
